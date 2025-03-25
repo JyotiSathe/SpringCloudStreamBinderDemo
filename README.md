@@ -1,4 +1,4 @@
-### ~NATS Commands~
+### **NATS Commands**
 
 Publish
 ```PS C:\Users\z004j0wy> docker run --network host -it natsio/nats-box
@@ -17,7 +17,7 @@ dinm5CD238GQQX:~# `nats sub "train.updates"`
 hello
 ```
 
-### ~Kafka Commands~
+### **Kafka Commands**
 ```
 docker ps | findstr kafka
 docker exec -it <container-id> bash
