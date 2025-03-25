@@ -1,4 +1,4 @@
-rootProject.name = "kafka-connector-poc"
+rootProject.name = "SpringCloudStreamBinderDemo"
 include 'Producer'
 include 'Consumer'
 
