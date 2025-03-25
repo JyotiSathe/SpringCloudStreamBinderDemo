@@ -1,17 +1,19 @@
 ### **NATS Commands**
 
 Publish
-```PS C:\Users\z004j0wy> docker run --network host -it natsio/nats-box
+```
+PS C:\Users\User> docker run --network host -it natsio/nats-box
 nats-box v0.16.0
-dinm5CD238GQQX:~# `nats publish train.updates "hello"`
+host:~# `nats publish train.updates "hello"`
 08:26:08 Published 5 bytes to "train.updates"
-dinm5CD238GQQX:~#
+host:~#
 ```
 
 Subscribe
-```PS C:\Users\z004j0wy> docker run --network host -it natsio/nats-box
+```
+PS C:\Users\User> docker run --network host -it natsio/nats-box
 nats-box v0.16.0
-dinm5CD238GQQX:~# `nats sub "train.updates"`
+host:~# `nats sub "train.updates"`
 08:25:32 Subscribing on train.updates
 [#1] Received on "train.updates"
 hello
