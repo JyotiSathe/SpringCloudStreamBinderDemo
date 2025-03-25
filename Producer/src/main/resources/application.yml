@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    function:
+      definition: produceMessage
+    stream:
+      bindings:
+        produceMessage-out-0:
+          destination: topicA
+          content-type: application/json
+          producer:
+            partition-count: 3
+            partition-key-expression: payload.trainNumber
+      kafka:
+        binder:
+          brokers: localhost:9092
+          required-acks: 1

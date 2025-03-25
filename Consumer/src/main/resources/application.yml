@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: kafka-processor
+  cloud:
+    function:
+      definition: validateMessage
+    stream:
+      default-binder: kafka
+      bindings:
+        validateMessage-in-0:
+          destination: topicA
+          content-type: application/json
+          group: validate-group
+          consumer:
+            partitioned: true
+        validateMessage-out-0:
+          destination: execution-response
+          binder: kafka
+        journeyPlanPublisher-out-0:
+          destination: train.updates
+          binder: nats
+      kafka:
+        binder:
+          brokers: localhost:9092
+        bindings:
+          validateMessage-in-0:
+            consumer:
+              configuration:
+                max.poll.records: 100
+      instance-count: ${REPLICA_COUNT:3}
+      instance-index: ${POD_INDEX:0}
+
+server:
+  port: ${SERVER_PORT:8081}
+
+nats:
+  spring:
+    server: ${NATS_SERVERS:nats://localhost:4222}

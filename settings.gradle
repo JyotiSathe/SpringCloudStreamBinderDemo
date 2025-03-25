@@ -1,0 +1,4 @@
+rootProject.name = "kafka-connector-poc"
+include 'Producer'
+include 'Consumer'
+
