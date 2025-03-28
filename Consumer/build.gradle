@@ -28,6 +28,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
+    implementation("io.nats:nats-spring-boot-starter:0.5.7")
+
     // Spring Cloud Stream
     implementation("org.springframework.cloud:spring-cloud-starter-stream-kafka")
     implementation("io.nats:nats-spring-cloud-stream-binder:0.5.7")

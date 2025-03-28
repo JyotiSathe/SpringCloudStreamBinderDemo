@@ -3,27 +3,26 @@ spring:
     name: kafka-processor
   cloud:
     function:
-      definition: validateMessage
+      definition: consumeMessage
     stream:
       default-binder: kafka
       bindings:
-        validateMessage-in-0:
+        consumeMessage-in-0:
           destination: topicA
           content-type: application/json
           group: validate-group
           consumer:
             partitioned: true
-        validateMessage-out-0:
+
+        # Kafka output binding
+        publishToKafka-out-0:
           destination: execution-response
           binder: kafka
-        journeyPlanPublisher-out-0:
-          destination: train.updates
-          binder: nats
       kafka:
         binder:
           brokers: localhost:9092
         bindings:
-          validateMessage-in-0:
+          consumeMessage-in-0:
             consumer:
               configuration:
                 max.poll.records: 100
@@ -34,5 +33,6 @@ server:
   port: ${SERVER_PORT:8081}
 
 nats:
+  completionInterval: ${NATS_CLEANUP_INTERVAL:PT30S}
   spring:
-    server: ${NATS_SERVERS:nats://localhost:4222}
+    server: nats://localhost:4222
